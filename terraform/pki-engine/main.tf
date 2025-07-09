@@ -45,14 +45,3 @@ resource "vault_pki_secret_backend_role" "subdomains" {
   key_type         = "rsa"
   key_bits         = 2048
 }
-
-# Create a KV to store certs private key
-resource "vault_mount" "cert_secrets" {
-  path        = "cert-secrets"
-  type        = "kv"
-  description = "KV storage for certs"
-
-  options = {
-    version = "2"
-  }
-}

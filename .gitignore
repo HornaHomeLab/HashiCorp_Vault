@@ -40,4 +40,5 @@ terraform.rc
 *.key
 
 */data
+/dev
 .DS_Store

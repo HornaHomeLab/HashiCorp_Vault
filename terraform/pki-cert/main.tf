@@ -13,7 +13,7 @@ resource "vault_pki_secret_backend_cert" "cert" {
 # Copy secrets data to allow using it after creation
 resource "vault_kv_secret_v2" "cert_storage" {
 
-  mount = "cert-secrets"
+  mount = var.kv_path
   name  = var.common_name
 
   data_json = jsonencode({

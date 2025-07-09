@@ -11,3 +11,7 @@ variable "secret_backend_name" {
   type        = string
   description = "Name of secrets backend in Vault"
 }
+variable "kv_path" {
+  type = string
+  description = "Mount path of the KV, to Certificate details"
+}
