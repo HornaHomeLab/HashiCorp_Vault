@@ -4,7 +4,7 @@
 # Example: ./vault-fetch-cert.sh vault.horna.local
 
 COMMON_NAME="$1"
-VAULT_MOUNT="cert-secrets"
+VAULT_MOUNT="cert_secrets"
 
 if [ -z "$COMMON_NAME" ]; then
     echo "❌ Usage: $0 <common_name>"
@@ -34,7 +34,4 @@ echo "$SECRET_JSON" | jq -r '.data.data.certificate'        > "${OUTPUT_DIR}/cer
 echo "$SECRET_JSON" | jq -r '.data.data.private_key'        > "${OUTPUT_DIR}/cert.key"
 echo "$SECRET_JSON" | jq -r '.data.data.issuing_ca'         > "${OUTPUT_DIR}/ca.crt"
 
-echo "📅 Issued At: $(echo "$SECRET_JSON" | jq -r '.data.metadata.custom_metadata.issued_at // "Not set"')"
-echo "⏳ Expiration: $(echo "$SECRET_JSON" | jq -r '.data.metadata.custom_metadata.expires_at // "Not set"')"
-echo ""
 echo "✅ Certificate data saved to: $OUTPUT_DIR"

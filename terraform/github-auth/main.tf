@@ -26,3 +26,9 @@ resource "vault_github_team" "gh_admin_team" {
   team       = var.github_administrators_name
   policies   = [vault_policy.gh_admin_policy.name]
 }
+resource "vault_github_team" "gh_contributor_team" {
+  depends_on = [vault_policy.gh_contributor_policy, vault_github_auth_backend.horna_org]
+  backend    = vault_github_auth_backend.horna_org.id
+  team       = var.github_contributors_name
+  policies   = [vault_policy.gh_contributor_policy.name]
+}
