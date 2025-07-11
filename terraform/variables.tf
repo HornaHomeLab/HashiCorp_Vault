@@ -18,3 +18,7 @@ variable "kv_path_tailscale" {
   type = string
   default = "tailscale"
 }
+variable "kv_path_infrastructure" {
+  type = string
+  default = "infrastructure"
+}

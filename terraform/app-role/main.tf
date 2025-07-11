@@ -1,7 +1,12 @@
+resource "vault_policy" "app_role_can_issue_token" {
+  name   = "app_role_can_issue_token"
+  policy = file("${path.module}/app_role_can_issue_token.hcl")
+}
+
 resource "vault_approle_auth_backend_role" "app_role" {
   backend        = var.app_role_backend_path
   role_name      = var.app_role_name
-  token_policies = var.app_role_policies
+  token_policies = setunion(var.app_role_policies, [vault_policy.app_role_can_issue_token.name])
   token_ttl      = 3600
   token_max_ttl  = 86400
 }
