@@ -40,3 +40,19 @@ module "cert_prometheus" {
   kv_path             = vault_mount.cert_secrets_kv.path
   common_name         = "prometheus.horna.local"
 }
+# module "pki_certs" {
+#   depends_on          = [module.pki_engine, vault_mount.cert_secrets_kv]
+#   source              = "./pki-cert"
+#   secret_backend_name = var.secret_backend_name
+#   kv_path             = vault_mount.cert_secrets_kv.path
+#   for_each = toset([
+#     "vault.horna.local",
+#     "docker-hub.horna.local",
+#     "tf-backend.horna.local",
+#     "grafana.horna.local",
+#     "prometheus.horna.local",
+#     "loki.horna.local",
+#   ])
+
+#   common_name = each.value
+# }
