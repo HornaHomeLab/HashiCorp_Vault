@@ -1,9 +1,9 @@
-path "cert-secrets/data/*" {
+path "cert_secrets/data/*" {
   capabilities = ["read", "list"]
 }
-path "cert-secrets/metadata/*" {
+path "cert_secrets/metadata/*" {
   capabilities = ["read", "list"]
 }
-path "cert-secrets/" {
+path "cert_secrets/" {
   capabilities = ["list"]
 }
