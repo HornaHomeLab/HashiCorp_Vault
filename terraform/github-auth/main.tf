@@ -14,21 +14,21 @@ resource "vault_github_auth_backend" "horna_org" {
 }
 resource "vault_policy" "gh_admin_policy" {
   name   = "github_administrator"
-  policy = file("${path.module}/policies/github_administrator.hcl")
+  policy = file("${path.module}/policies/github_admin.hcl")
 }
 resource "vault_policy" "gh_contributor_policy" {
   name   = "github_contributor"
-  policy = file("${path.module}/policies/github_contributor.hcl")
+  policy = file("${path.module}/policies/github_user.hcl")
 }
 resource "vault_github_team" "gh_admin_team" {
   depends_on = [vault_policy.gh_admin_policy, vault_github_auth_backend.horna_org]
   backend    = vault_github_auth_backend.horna_org.id
-  team       = var.github_administrators_name
+  team       = var.github_team_admins
   policies   = [vault_policy.gh_admin_policy.name]
 }
 resource "vault_github_team" "gh_contributor_team" {
   depends_on = [vault_policy.gh_contributor_policy, vault_github_auth_backend.horna_org]
   backend    = vault_github_auth_backend.horna_org.id
-  team       = var.github_contributors_name
+  team       = var.github_team_users
   policies   = [vault_policy.gh_contributor_policy.name]
 }
