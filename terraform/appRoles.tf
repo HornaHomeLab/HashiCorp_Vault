@@ -25,3 +25,12 @@ module "github_app_role" {
     "root_ca_reader"
   ]
 }
+module "docker_image_builder_app_role" {
+  source                = "./app-role"
+  app_role_backend_path = vault_auth_backend.approle.path
+  kv_path               = vault_mount.app_roles_kv.path
+  app_role_name         = "docker_image_builder"
+  app_role_policies = [
+    module.policies.templated_reader_policies[var.kv_path_certs],
+  ]
+}
