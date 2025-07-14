@@ -1,9 +1,11 @@
-path "tailscale/data/*" {
+path "${kv_path}/data/*" {
   capabilities = ["read", "list"]
 }
-path "tailscale/metadata/*" {
+
+path "${kv_path}/metadata/*" {
   capabilities = ["read", "list"]
 }
-path "tailscale/" {
+
+path "${kv_path}/" {
   capabilities = ["list"]
 }

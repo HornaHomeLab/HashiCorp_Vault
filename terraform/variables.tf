@@ -22,3 +22,11 @@ variable "kv_path_infrastructure" {
   type = string
   default = "infrastructure"
 }
+variable "kv_path_external_providers" {
+  type = string
+  default = "external_providers"
+}
+variable "kv_path_dot_env_file" {
+  type = string
+  default = "dot_env_file"
+}

@@ -16,3 +16,11 @@ resource "vault_policy" "dynamic" {
   name   = each.key
   policy = file("${local.policies_dir}/${each.value}")
 }
+
+resource "vault_policy" "templated_reader" {
+  for_each = var.resource_policy_reader
+  name     = "${each.value}_reader"
+  policy = templatefile("${path.module}/templates/kv_reader.tpl", {
+    kv_path = each.value
+  })
+}
