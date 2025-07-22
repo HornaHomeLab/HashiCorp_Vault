@@ -12,6 +12,8 @@ module "terraform_app_role" {
     module.policies.templated_reader_policies[var.kv_path_certs],
     module.policies.templated_reader_policies[var.kv_path_external_providers],
     module.policies.templated_reader_policies[var.kv_path_dot_env_file],
+    module.policies.templated_reader_policies[var.kv_path_proxmox_vms],
+    module.policies.templated_writer_policies[var.kv_path_proxmox_vms],
     "root_ca_reader",
   ]
 }

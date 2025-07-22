@@ -6,6 +6,10 @@ module "policies" {
     var.kv_path_tailscale,
     var.kv_path_external_providers,
     var.kv_path_dot_env_file,
+    var.kv_path_proxmox_vms
+  ]
+  resource_policy_writer = [
+    var.kv_path_proxmox_vms,
   ]
 }
 module "github_authentication" {

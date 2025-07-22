@@ -24,3 +24,10 @@ resource "vault_policy" "templated_reader" {
     kv_path = each.value
   })
 }
+resource "vault_policy" "templated_writer" {
+  for_each = var.resource_policy_writer
+  name     = "${each.value}_reader"
+  policy = templatefile("${path.module}/templates/kv_writer.tpl", {
+    kv_path = each.value
+  })
+}
