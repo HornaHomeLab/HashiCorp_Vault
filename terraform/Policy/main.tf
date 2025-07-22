@@ -26,7 +26,7 @@ resource "vault_policy" "templated_reader" {
 }
 resource "vault_policy" "templated_writer" {
   for_each = var.resource_policy_writer
-  name     = "${each.value}_reader"
+  name     = "${each.value}_writer"
   policy = templatefile("${path.module}/templates/kv_writer.tpl", {
     kv_path = each.value
   })
