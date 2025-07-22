@@ -1,5 +1,5 @@
 path "${kv_path}/data/*" {
-  capabilities = ["create", "update", "read", "list"]
+  capabilities = ["create", "update", "read", "list", "delete"]
 }
 
 path "${kv_path}/metadata/*" {
