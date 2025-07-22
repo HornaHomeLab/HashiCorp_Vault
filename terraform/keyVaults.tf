@@ -15,13 +15,14 @@ resource "vault_mount" "cert_secrets_kv" {
   }
 }
 
-# Create KV, which will be filled in by engineer
+# Create KV, which will be filled in by engineer or other automation
 resource "vault_mount" "key_vaults" {
   for_each = {
     "${var.kv_path_external_providers}" = "KV storage for external provider credentials"
     "${var.kv_path_tailscale}"          = "KV storage for Tailscale secrets"
     "${var.kv_path_infrastructure}"     = "KV storage for infrastructure credentials"
     "${var.kv_path_dot_env_file}"       = "KV storage for .env file"
+    "${var.kv_path_proxmox_vms}"        = "KV storage for proxmox vm credentials"
   }
   path        = each.key
   type        = "kv"

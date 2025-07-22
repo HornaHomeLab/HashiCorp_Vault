@@ -30,3 +30,7 @@ variable "kv_path_dot_env_file" {
   type = string
   default = "dot_env_file"
 }
+variable "kv_path_proxmox_vms" {
+  type = string
+  default = "proxmox_vms"
+}
