@@ -17,6 +17,18 @@ module "terraform_app_role" {
     "root_ca_reader",
   ]
 }
+module "ansible_app_role" {
+  source                = "./app-role"
+  app_role_backend_path = vault_auth_backend.approle.path
+  kv_path               = vault_mount.app_roles_kv.path
+  app_role_name         = "Ansible"
+  app_role_policies = [
+    module.policies.templated_reader_policies[var.kv_path_certs],
+    module.policies.templated_reader_policies[var.kv_path_proxmox_vms],
+    "root_ca_reader",
+    "ssh_ca_reader",
+  ]
+}
 module "github_app_role" {
   source                = "./app-role"
   app_role_backend_path = vault_auth_backend.approle.path
