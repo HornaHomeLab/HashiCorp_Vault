@@ -10,6 +10,7 @@ module "policies" {
   ]
   resource_policy_writer = [
     var.kv_path_proxmox_vms,
+    var.kv_path_infrastructure,
   ]
 }
 module "github_authentication" {

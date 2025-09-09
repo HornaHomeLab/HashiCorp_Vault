@@ -25,6 +25,7 @@ module "ansible_app_role" {
   app_role_policies = [
     module.policies.templated_reader_policies[var.kv_path_certs],
     module.policies.templated_reader_policies[var.kv_path_proxmox_vms],
+    module.policies.templated_writer_policies[var.kv_path_infrastructure],
     "root_ca_reader",
     "ssh_ca_reader",
   ]
