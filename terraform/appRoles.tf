@@ -49,3 +49,16 @@ module "docker_image_builder_app_role" {
     module.policies.templated_reader_policies[var.kv_path_certs],
   ]
 }
+module "k3s_prod_app_role" {
+  source                = "./app-role"
+  app_role_backend_path = vault_auth_backend.approle.path
+  kv_path               = vault_mount.app_roles_kv.path
+  app_role_name         = "k3s_prod"
+  app_role_policies = [
+    module.policies.templated_reader_policies[var.kv_path_infrastructure],
+    module.policies.templated_reader_policies[var.kv_path_certs],
+    module.policies.templated_reader_policies[var.kv_path_external_providers],
+    module.policies.templated_reader_policies[var.kv_path_dot_env_file],
+    module.policies.templated_reader_policies[var.kv_path_proxmox_vms],
+  ]
+}
