@@ -34,3 +34,7 @@ variable "kv_path_proxmox_vms" {
   type = string
   default = "proxmox_vms"
 }
+variable "kv_path_minio_accounts" {
+  type = string
+  default = "minio_accounts"
+}

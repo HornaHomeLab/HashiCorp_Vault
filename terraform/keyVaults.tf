@@ -23,6 +23,7 @@ resource "vault_mount" "key_vaults" {
     "${var.kv_path_infrastructure}"     = "KV storage for infrastructure credentials"
     "${var.kv_path_dot_env_file}"       = "KV storage for .env file"
     "${var.kv_path_proxmox_vms}"        = "KV storage for proxmox vm credentials"
+    "${var.kv_path_minio_accounts}"     = "KV storage for MinIO credentials"
   }
   path        = each.key
   type        = "kv"

@@ -60,5 +60,6 @@ module "k3s_prod_app_role" {
     module.policies.templated_reader_policies[var.kv_path_external_providers],
     module.policies.templated_reader_policies[var.kv_path_dot_env_file],
     module.policies.templated_reader_policies[var.kv_path_proxmox_vms],
+    module.policies.templated_reader_policies[var.kv_path_minio_accounts],
   ]
 }
